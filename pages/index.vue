@@ -2,7 +2,7 @@
   <div class="container">
     <div id="mainContainer" class="full-screen">
       <SideBar id="sideBar" class="side-bar"/>
-      <div id="scrollContainer" class="scroll-container">
+      <div id="luxy" class="scroll-container">
         <!--div id="scrollContainerBackground" class="scroll-container-background">
           <img class="block-notice-back" src="../assets/image/notice-background.svg" :style="{ 'margin-top' : backgroundMargin+'px' }"/>
           <img class="block-concept-back" src="../assets/image/concept-background.svg" />
@@ -44,17 +44,17 @@
             </div>
           </div>
         </div>
-        <div class="block-concept-video-container">
+        <div class="block-concept-video-container scroll-block">
           <iframe class="block-concept-video" src="https://www.youtube.com/embed/j4zZ4hp7Ef8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="block-committee-poem">
+        <div class="block-committee-poem scroll-block">
           <img class="committee-poem-cloud" src="../assets/image/cloud1.svg">
           <div class="committee-poem-container">
             <img class="committee-poem-image" src="../assets/image/test.png"/>
             <div class="committee-poem-text"><font class="title">実行委員長より<br></font><br>年々成長し、進化を続ける聖光祭は今年で60年目。スローガン “NEXIT” は記念となる今年の文化祭を一つの節目として、次の世代へ継承していこうという願いを込め、next と exit を組み合わせて創りました。「ドラゴン桜2」とのコラボや聖光祭アプリを用いた企画「トレジャーハント」などは皆様を満足させること間違いなし！ぜひ最高の祭りをご堪能ください。<br><font class="name">実行委員長　大下 晟生</font></div>
           </div>
         </div>
-        <div class="block-outline">
+        <div class="block-outline scroll-block">
           <div class="outline-title">開催概要</div>
           <img class="outline-image" src="../assets/image/outline.png"/>
         </div>
@@ -68,6 +68,7 @@
 import * as animationData from "~/assets/animation/test.json";
 import {mapState} from 'vuex';
 import jQuery from 'jquery'
+import luxy from "luxy.js"
 global.jquery = jQuery
 global.$ = jQuery
 window.$ = window.jQuery = require('jquery')
@@ -76,14 +77,8 @@ export default {
   head: {
     title: '第62回聖光祭公式サイト｜ホーム'
   },
-  mounted () {
-    console.log($("#scrollContainer").scrollTop())
-    $("#scrollContainerBackground").css('transform', 'translateY(-' + $("#scrollContainer").scrollTop() + 'px)');
-    $("#scrollContainer").scroll(function (){
-      $("#scrollContainerBackground").css('transform', 'translateY(-' + this.scrollTop + 'px)');
-    })
-    this.backgroundMargin = $(window).outerHeight();
-    console.log($(window).height())
+  mounted() {
+    //luxy.init();
   },
   methods: {
     handleAnimation: function(anim) {
@@ -231,6 +226,7 @@ export default {
   background: url('../assets/image/concept_background.png');
     background-repeat: no-repeat;
   background-size: contain;
+  scroll-snap-align: center;
 }
 
 .concept-text-blank {
@@ -287,11 +283,13 @@ export default {
 .committee-poem-cloud {
   height: auto;
   width: 100%;
+  margin-top: 5vh;
 }
 
 .block-concept-video-container {
   height: auto;
   width: 100%;
+  scroll-snap-align: center;
 }
 
 .block-concept-video {
@@ -309,8 +307,8 @@ export default {
 
 .committee-poem-container {
   height: 45%;
-  width: 68%;
-  margin-left: 17%;
+  width: 70%;
+  margin-left: 15%;
   text-align: left;
   margin-top: 5%;
 }
@@ -318,7 +316,7 @@ export default {
 .committee-poem-image {
   display: inline-block;
   height: auto;
-  width: 50%;
+  width: 40%;
 
   margin-top: 1vh;
 }
@@ -365,5 +363,6 @@ export default {
   margin-top: 5%;
 }
 .block-footer {
+  scroll-snap-align: end;
 }
 </style>

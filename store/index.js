@@ -10,6 +10,7 @@ const createStore = () => {
       ],
       departments: [
         {num: "01",name: "展示部門", name_alphabet: "The Department of Display", img_name:"displays", body:"展示部門は展示団体を統括し、補佐する部門です。聖光祭のメインとも言える展示団体の準備がスムーズに、その完成度が高くなるように補佐し支えつづけるのが展示部門の仕事です。資材の配布や教室の確保、進捗の管理などを行います。"},
+        {num: "02",name: "食品部門", name_alphabet: "The Department of Food", img_name:"displays", body:"食品部門は食品店舗を統括し、補佐する部門です。聖光祭の要とも言える食品店舗を統括し、よりよい味と最高のおもてなしを提供できるよう、何回も試作を繰り返し追求します。焼きそばや餃子などの王道店舗からポップコーンやドリンクなどのちょっとした食品までぜひどうぞ！"},
       ]
     }),
   })

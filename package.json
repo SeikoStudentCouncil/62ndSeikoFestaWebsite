@@ -13,6 +13,7 @@
     "core-js": "^3.9.1",
     "jquery": "^3.6.0",
     "lottie-web": "^5.7.8",
+    "luxy.js": "^0.1.0",
     "nuxt": "^2.15.3"
   },
   "devDependencies": {

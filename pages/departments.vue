@@ -21,6 +21,9 @@
 import {mapState} from 'vuex';
 
 export default {
+    head: {
+        title: '第62回聖光祭公式サイト｜部門'
+    },
     computed: {
         ...mapState(['departments'])
     },
@@ -82,7 +85,7 @@ export default {
     margin-top: 40%;
     letter-spacing: 0.1em;
     line-height: 180%;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .departments-image {

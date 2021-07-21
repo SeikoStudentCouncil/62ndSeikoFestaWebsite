@@ -46,7 +46,7 @@ div::-webkit-scrollbar {
   height: 100vh;
   width: calc(100vw - 60px);
   overflow-y: scroll;
-  scroll-snap-type: mandatory;
+  scroll-snap-type: y mandatory;
 }
 
 .scroll-container-inner {
