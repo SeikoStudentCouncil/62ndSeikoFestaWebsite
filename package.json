@@ -1,0 +1,22 @@
+{
+  "name": "62ndSeikoFestaTest",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev-debug": "node --inspect-brk=9229 node_modules/nuxt/bin/nuxt",
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "^3.9.1",
+    "jquery": "^3.6.0",
+    "lottie-web": "^5.7.8",
+    "nuxt": "^2.15.3"
+  },
+  "devDependencies": {
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0"
+  }
+}

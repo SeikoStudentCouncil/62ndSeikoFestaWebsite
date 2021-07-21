@@ -1,0 +1,77 @@
+:root {
+  --color-black: #393E46;
+  --color-shadow: rgba(57, 62, 70, 0.39);
+}
+
+/* タグ関係 */
+* {
+    margin: 0px;
+}
+
+/* スクロールバーを消す */
+div {
+    /*-ms-overflow-style: none;
+    scrollbar-width: none;*/
+    color: var(--color-black);
+    font-family: noto-sans-cjk-jp, sans-serif;
+}
+div::-webkit-scrollbar {
+  /* display: none;*/
+}
+
+.scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/*  */
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.full-screen {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.scroll-container {
+  display: inline-block;
+  height: 100vh;
+  width: calc(100vw - 60px);
+  overflow-y: scroll;
+  scroll-snap-type: mandatory;
+}
+
+.scroll-container-inner {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scroll-container-background {
+  position: absolute;
+  top: 0px;
+  height: auto;
+  width: 100%;
+  background: #FDFDFD;
+  z-index: -1;
+  overflow: hidden;
+  transform: translateY(-50px);
+}
+
+
+.scroll-block {
+  scroll-snap-align: start;
+  z-index: 1;
+}
+/* ホバーした時にマウスを変化させる */
+.hover-mouse-pointer {
+    cursor: pointer;
+}
