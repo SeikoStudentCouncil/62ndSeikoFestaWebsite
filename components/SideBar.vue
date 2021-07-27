@@ -1,9 +1,11 @@
 <template>
     <div class="sidebar-container">
         <div class="sidebar-menu hover-mouse-pointer" @click="onClickMenu" >
-            <svg class="sidebar-menu-arrow" xmlns="http://www.w3.org/2000/svg" width="46.083" height="23.291" viewBox="0 0 46.083 23.291">
-                <path d="M1850,0l19.075,17.26L1889.025,0" transform="translate(-1846.469 3.531)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
-            </svg>
+            <div :class="{ 'btn-trigger': true, 'active': isShowDetailes }" >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
         <svg class="sidebar-title" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(-1860 -407)">
@@ -17,14 +19,11 @@
 
 <script>
 export default {
-    data() {
-        return {
-            isShowDetailes: false
-        }
-    },
+    props: ['isShowDetailes'],
     methods: {
         onClickMenu() {
-            this.isShowDetailes = true
+            this.$emit("onClickMenu")
+            console
         }
     }
 }
@@ -36,7 +35,7 @@ export default {
     height: 100vh;
     width: 60px;
     background: #EEEEEE;
-    float: left;
+    left: 0px;
 }
 
 .sidebar-menu {

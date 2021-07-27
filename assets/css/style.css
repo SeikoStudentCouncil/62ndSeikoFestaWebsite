@@ -14,9 +14,17 @@ div {
     scrollbar-width: none;*/
     color: var(--color-black);
     font-family: noto-sans-cjk-jp, sans-serif;
+    margin: 0px;
 }
 div::-webkit-scrollbar {
   /* display: none;*/
+}
+
+p {
+  margin: 0px;
+  margin-block-end: 0px;
+  margin-block-start: 0px;
+  margin-inline: 0px;
 }
 
 .scroll-bar::-webkit-scrollbar {
@@ -41,12 +49,23 @@ div::-webkit-scrollbar {
   overflow: hidden;
 }
 
+.side-bar {
+  z-index: 999;
+  position: absolute;
+  float: left;
+  margin-left: 0px;
+}
+
 .scroll-container {
   display: inline-block;
   height: 100vh;
   width: calc(100vw - 60px);
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  background: #FDFDFD;
+  z-index: -999;
+  left: 0px;
+  margin-left: 60px;
 }
 
 .scroll-container-inner {
@@ -75,3 +94,309 @@ div::-webkit-scrollbar {
 .hover-mouse-pointer {
     cursor: pointer;
 }
+
+.menu-anime {
+  position: absolute;
+  width: 0%;
+  height: 0vh;
+  z-index: 5;
+}
+
+
+.menu-anime.anime{
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+}
+
+.menu-anime .menu-anime-1 {
+  position: absolute;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  background: #393E46;
+}
+
+.menu-anime .menu-anime-2 {
+  position: absolute;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  background: #02C1C9;
+}
+
+.menu-anime .menu-anime-3 {
+  position: absolute;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  background: #FDFDFD;
+}
+
+.menu-anime .menu-anime-4 {
+  position: absolute;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  background: #393E46;
+}
+
+
+.menu-anime.anime .menu-anime-1 {
+  animation: line 1.4s cubic-bezier(0.83, 0, 0.17, 1) 0s 1;
+}
+
+.menu-anime.anime .menu-anime-2 {
+    animation: spread 0.7s cubic-bezier(0.85, 0, 0.15, 1) 0.77s 1 ;
+}
+
+.menu-anime.anime .menu-anime-3 {
+    animation: spread 0.7s cubic-bezier(0.85, 0, 0.15, 1) 0.84s 1 forwards;
+}
+
+.menu-anime.anime .menu-anime-4 {
+    animation: spread 0.7s cubic-bezier(0.85, 0, 0.15, 1) 0.91s 1;
+}
+
+.menu-anime .menu-innner {
+  background: url("../image/menu_background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1);
+  transition: transform 0.7s cubic-bezier(0.85, 0, 0.15, 1) 3s;
+}
+
+.menu-anime.anime .menu-innner {
+  transform: scale(1.1);
+  animation: popup 0.8s cubic-bezier(0.85, 0, 0.15, 1) 1.4s 1 forwards;
+}
+
+.menu-anime .menu-concept {
+  font-family: transat, sans-serif;
+  font-weight: 500;
+  font-size: 8.5vw;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  margin-top: 50vh;
+  transform: translate3d(-200%, -50%, 0px);
+  display: inline-block;
+  margin-left: 3vw;
+  float: left;
+  transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1) 1.5s;
+}
+
+.menu-anime.anime .menu-concept {
+  transform: translate3d(0%, -50%, 0px);
+}
+
+
+
+.menu-container {
+  margin-top: 50vh;
+  transform: translateY(-30%);
+  display: inline-block;
+  margin-left: 10vw;
+  float: left;
+  width: auto;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.5s;
+}
+
+
+.menu-anime.anime .menu-container {
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.menu-content-row {
+  height: auto;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 100%;
+  font-family: bilo,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.7em;
+  text-align: left;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.menu-content-row:hover {
+  opacity: 1;
+}
+
+.menu-content-row a {
+  margin-right: 1.5vw;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s;
+}
+
+.menu-content-row:hover a {
+  margin-left: 1.5vw;
+  margin-right: 0vw;
+}
+
+.menu-content-block {
+  height: 1em;
+  width: 0px;
+  border-radius: 2px;
+  display: inline-block;
+  float: left;
+  margin-top: 0.5vh;
+  margin-right: 0px;
+  background: #02C1C9;
+}
+
+
+.menu-content-row.selected .menu-content-block {
+  width: 13px;
+  margin-right: 15px;
+}
+
+.menu-content-jp {
+  float: right;
+  height: 100%;
+  font-family: noto-sans-cjk-jp, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.5em;
+  line-height: 3em;
+  margin-left: 4vw;
+}
+
+.menu-over-color {
+  position: absolute;
+  height: 100vh;
+  width: 20vw;
+  float: right;
+  margin-left: 100vw;
+  background: #02C1C9;
+  transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1) 1.5s;
+  z-index: 999;
+}
+
+.menu-anime.anime .menu-over-color {
+  margin-left: 80vw;
+}
+
+.menu-anime.close .menu-over-color {
+  animation: backAnimation 4s cubic-bezier(0.85, 0, 0.15, 1) 0s 1 forwards;
+}
+
+.menu-anime.blind .menu-over-color {
+  margin-left: 0vw;
+  width: 100vw;
+  transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1) 1.5s;
+}
+
+.btn-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+  cursor: pointer;
+  margin-top: 8px;
+  transform: scale(0.6);
+}
+.btn-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.btn-trigger, .btn-trigger span {
+  display: inline-block;
+  transition: all .5s;
+  box-sizing: border-box;
+}
+.btn-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.btn-trigger span:nth-of-type(2) {
+  top: 20px;
+}
+.btn-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+
+
+.btn-trigger.active span:nth-of-type(1),
+.btn-trigger.active span:nth-of-type(3) {
+  width: 20px;
+}
+.btn-trigger.active span:nth-of-type(1) {
+  -webkit-transform: translate(-1px,13px) rotate(-45deg);
+  transform: translate(-1px,13px) rotate(-45deg);
+}
+.btn-trigger.active span:nth-of-type(3) {
+  -webkit-transform: translate(-1px,-13px) rotate(45deg);
+  transform: translate(-1px,-13px) rotate(45deg);
+}
+
+
+
+
+
+@keyframes line {
+    0% {
+      width: 0%;
+      height: 6vh;
+      margin-top: 50vh;
+    }
+    50% {
+      width: 100%;
+      height: 6vh;
+      margin-top: 50vh;
+    }
+    100% {
+      width: 100%;
+      height: 102vh;
+      margin-top: 50vh;
+    }
+}
+
+@keyframes spread {
+    0% {
+      width: 100%;
+      height: 0vh;
+      margin-top: 50vh;
+    }
+    100% {
+      width: 100%;
+      height: 102vh;
+      margin-top: 50vh;
+    }
+}
+
+@keyframes popup {
+    0% {
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+    }
+    100% {
+      height: 100%;
+      width: 100%;
+      opacity: 1;
+    }
+}
+
+@keyframes backAnimation {
+  0% {
+    margin-left: 80vw;
+    width: 20vw;
+  }
+  10% {
+    margin-left: 0vw;
+    width: 100vw;
+  }
+  90% {
+    margin-left: 0vw;
+    width: 100vw;
+  }
+  100% {
+    margin-left: 100vw;
+    width: 20vw;
+  }
+}
+
+
+

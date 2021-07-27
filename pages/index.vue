@@ -1,8 +1,28 @@
 <template>
   <div class="container">
     <div id="mainContainer" class="full-screen">
-      <SideBar id="sideBar" class="side-bar"/>
+      <SideBar id="sideBar" class="side-bar" :isShowDetailes="isShowDetailes" @onClickMenu="onMenuAnime"/>
       <div id="luxy" class="scroll-container">
+        <div :class="{ 'menu-anime': true, 'anime':isShowDetailes, 'close':onCloseDetails, 'blind':onBlinded  }">
+          <div class="menu-anime-1"></div>
+          <div class="menu-anime-2"></div>
+          <div class="menu-anime-3"></div>
+          <!--div class="menu-anime-4"></!--div-->
+          <div class="menu-innner">
+            <div class="menu-concept">MENU!</div>
+            <div class="menu-container">
+              <div class="menu-content-row selected" @click="onMenuAnime"><div class="menu-content-block"></div> <a>Home </a> <span class="menu-content-jp">ホーム</span></div>
+              <div class="menu-content-row"><div class="menu-content-block"></div><a>Map</a><span class="menu-content-jp">マップ</span></div>
+              <div class="menu-content-row"><div class="menu-content-block"></div><a>Timetable</a><span class="menu-content-jp">タイムテーブル</span></div>
+              <div class="menu-content-row"><div class="menu-content-block"></div><a>Congestions</a><span class="menu-content-jp">室内混雑度</span></div>
+              <div class="menu-content-row" @click="transmit('departments')"><div class="menu-content-block"></div><a>Departments</a><span class="menu-content-jp">部門紹介</span></div>
+              <div class="menu-content-row"><div class="menu-content-block"></div><a>Club Exhibition</a><span class="menu-content-jp">展示団体</span></div>
+              <div class="menu-content-row"><div class="menu-content-block"></div><a>Food Stands</a><span class="menu-content-jp">食品店舗</span></div>
+              <div class="menu-content-row"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
+            </div>
+            <div class="menu-over-color"></div>
+          </div>
+        </div>
         <!--div id="scrollContainerBackground" class="scroll-container-background">
           <img class="block-notice-back" src="../assets/image/notice-background.svg" :style="{ 'margin-top' : backgroundMargin+'px' }"/>
           <img class="block-concept-back" src="../assets/image/concept-background.svg" />
@@ -18,7 +38,7 @@
               <div class="notice-list-content-date">{{content.date}}</div>
               <div class="notice-list-content-body">{{content.body}}</div>
             </div>
-            <img class="notice-list-detail" src="../assets/image/notice-list-detail.svg"/>
+            <img class="notice-list-detail" src="../assets/image/notice-list-detail.svg" />
           </div>
         </div>
 
@@ -68,21 +88,50 @@
 import * as animationData from "~/assets/animation/test.json";
 import {mapState} from 'vuex';
 import jQuery from 'jquery'
-import luxy from "luxy.js"
 global.jquery = jQuery
 global.$ = jQuery
 window.$ = window.jQuery = require('jquery')
 
+
 export default {
   head: {
-    title: '第62回聖光祭公式サイト｜ホーム'
+    title: 'トップ｜第62回聖光祭公式ホームページ'
   },
   mounted() {
-    //luxy.init();
+    setTimeout(function() {
+        this.onBlinded = false
+    }.bind(this), 1000)
+
   },
   methods: {
-    handleAnimation: function(anim) {
+    transmit(pageNmae) {
+      this.setOnCloseDetailes(true)
+      setTimeout(function() {
+        this.$router.push(pageNmae)
+      }.bind(this), 1000)
+    },
+    handleAnimation(anim) {
       this.anim = anim;
+    },
+    onMenuAnime() {
+      console.log("on")
+      if (!this.isShowDetailes) {
+        this.setIsShowDetailes(true)
+      } else {
+        this.setOnCloseDetailes(true)
+        setTimeout(function() {
+          this.setIsShowDetailes(false)
+        }.bind(this), 1000)
+        setTimeout(function() {
+          this.setOnCloseDetailes(false)
+        }.bind(this), 6000)
+      }
+    },
+    setIsShowDetailes(bool) {
+      this.isShowDetailes = bool
+    },
+    setOnCloseDetailes(bool) {
+      this.onCloseDetails = bool
     }
   },
   computed: {
@@ -97,6 +146,9 @@ export default {
   },
   data() {
     return {
+      onBlinded: true,
+      isShowDetailes: false,
+      onCloseDetails: false,
       defaultOptions: {
         animationData: animationData
       },
