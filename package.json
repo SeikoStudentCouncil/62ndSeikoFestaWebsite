@@ -1,5 +1,5 @@
 {
-  "name": "62ndSeikoFestaTest",
+  "name": "62ndseikofestatest",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/firebase": "^7.6.1",
     "core-js": "^3.9.1",
+    "firebase": "^8.8.0",
     "jquery": "^3.6.0",
     "lottie-web": "^5.7.8",
     "luxy.js": "^0.1.0",
@@ -20,5 +22,20 @@
   "devDependencies": {
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0"
-  }
+  },
+  "description": "## Build Setup",
+  "main": "npm install --save firebase",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeikoStudentCouncil/62ndSeikoFestaWebsite.git"
+  },
+  "keywords": [
+    "huan78ei90mn6SEIKO"
+  ],
+  "author": "Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeikoStudentCouncil/62ndSeikoFestaWebsite/issues"
+  },
+  "homepage": "https://github.com/SeikoStudentCouncil/62ndSeikoFestaWebsite#readme"
 }

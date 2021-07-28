@@ -66,6 +66,8 @@ p {
   z-index: -999;
   left: 0px;
   margin-left: 60px;
+  top: 0px;
+  vertical-align: top;
 }
 
 .scroll-container-inner {

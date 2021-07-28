@@ -42,7 +42,7 @@ import {mapState} from 'vuex';
 
 export default {
     head: {
-        title: '部門紹介｜第62回聖光祭公式サイト'
+        title: '部門紹介'
     },
     computed: {
         ...mapState(['departments'])

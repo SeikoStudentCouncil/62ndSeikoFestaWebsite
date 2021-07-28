@@ -95,13 +95,12 @@ window.$ = window.jQuery = require('jquery')
 
 export default {
   head: {
-    title: 'トップ｜第62回聖光祭公式ホームページ'
+    title: 'トップ'
   },
   mounted() {
     setTimeout(function() {
         this.onBlinded = false
     }.bind(this), 1000)
-
   },
   methods: {
     transmit(pageNmae) {

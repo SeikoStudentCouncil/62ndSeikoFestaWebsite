@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: '第62回聖光祭公式サイト',
+    titleTemplate: '｜第62回聖光祭公式サイト',
     htmlAttrs: {
       lang: 'ja'
     },
@@ -39,7 +39,26 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
+ modules: [
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyAoYxCjDpPYPA3eMwcHoQDCYoAiS1CF2V4",
+          authDomain: "seikofes62ndwebsite.firebaseapp.com",
+          projectId: "seikofes62ndwebsite",
+          storageBucket: "seikofes62ndwebsite.appspot.com",
+          messagingSenderId: "2816752655",
+          appId: "1:2816752655:web:282fcac0e22718a0c7777a",
+          measurementId: "G-KETHWYCYN5"
+        },
+        services: {
+          firestore: true,
+          storage: true,
+          hosting: true
+        }
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
