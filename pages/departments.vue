@@ -18,7 +18,7 @@
                         <div class="menu-content-row selected" @click="onMenuAnime"><div class="menu-content-block"></div><a>Departments</a><span class="menu-content-jp">部門紹介</span></div>
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Club Exhibition</a><span class="menu-content-jp">展示団体</span></div>
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Food Stands</a><span class="menu-content-jp">食品店舗</span></div>
-                        <div class="menu-content-row"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
+                        <div class="menu-content-row" @click="transmit('/articles')"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
                     </div>
                     <div class="menu-over-color"></div>
                     </div>
@@ -59,7 +59,7 @@ export default {
         transmit(pageNmae) {
             this.setOnCloseDetailes(true)
             setTimeout(function() {
-                this.$router.push(pageNmae)
+                window.location.href = pageNmae
             }.bind(this), 1000)
         },
         handleAnimation(anim) {

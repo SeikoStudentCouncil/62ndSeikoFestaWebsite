@@ -15,10 +15,10 @@
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Map</a><span class="menu-content-jp">マップ</span></div>
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Timetable</a><span class="menu-content-jp">タイムテーブル</span></div>
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Congestions</a><span class="menu-content-jp">室内混雑度</span></div>
-                        <div class="menu-content-row selected" @click="onMenuAnime"><div class="menu-content-block"></div><a>Departments</a><span class="menu-content-jp">部門紹介</span></div>
+                        <div class="menu-content-row" @click="transmit('/departments')"><div class="menu-content-block"></div><a>Departments</a><span class="menu-content-jp">部門紹介</span></div>
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Club Exhibition</a><span class="menu-content-jp">展示団体</span></div>
                         <div class="menu-content-row"><div class="menu-content-block"></div><a>Food Stands</a><span class="menu-content-jp">食品店舗</span></div>
-                        <div class="menu-content-row"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
+                        <div class="menu-content-row selected" @click="transmit('/articles')"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
                     </div>
                     <div class="menu-over-color"></div>
                     </div>
@@ -41,6 +41,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import "firebase/storage";
+
+import 'vue-router';
 import jQuery from 'jquery'
 global.jquery = jQuery
 global.$ = jQuery
@@ -60,6 +62,9 @@ var db = firebase.firestore(app);
 var storage = firebase.storage();
 
 export default {
+    head: {
+        title: '記事'
+    },
     data() {
         return {
             onBlinded: true,
@@ -70,16 +75,11 @@ export default {
             imageUrl: {}
         }
     },
-    head() {
-        return {
-            title: this.articleDocument.title
-        }
-    },
     methods: {
         transmit(pageNmae) {
             this.setOnCloseDetailes(true)
             setTimeout(function() {
-                this.$router.push(pageNmae)
+                window.location.href = pageNmae
             }.bind(this), 1000)
         },
         onMenuAnime() {
@@ -102,7 +102,7 @@ export default {
         setOnCloseDetailes(bool) {
             this.onCloseDetails = bool
         },
-        async getImageFromStorage(num, callback) {
+        getImageFromStorage(num, callback) {
 
             storage.ref().child('Articles').child(this.articleId).child(`${this.articleId}-${num}.png`)
                 .getDownloadURL().then(callback)
@@ -110,8 +110,8 @@ export default {
                     // TODO
                 });
         },
-        async getArticleFromFirestore() {
-            var ref = db.collection('Articles').doc('n-001')
+        getArticleFromFirestore() {
+            var ref = db.collection('Articles').doc(this.articleId)
             ref.get().then(function(doc){
                 if (doc.exists) {
                     var article = doc.data()
@@ -158,11 +158,15 @@ export default {
         this.onBlinded = false
     }.bind(this), 1000)
     this.getArticleFromFirestore()
+    document.title = this.articleDocument.title
     this.getImageFromStorage('00', function(url){
         console.log("test")
         console.log(url)
         $('.article-title').css({'background-image': `url(${url})`})
     })
+  },
+  render() {
+
   }
 }
 </script>
@@ -231,11 +235,12 @@ export default {
     margin-top: 1vh;
     margin-left: 48vw;
     transform: translateX(-50%);
-    background: #FDFDFD;
+    background: #02C1C9;
     font-size: 1.1em;
     font-weight: 600;
     display: inline-block;
     letter-spacing: 0.1em;
+    color: #FDFDFD;
 }
 
 .article-block {
@@ -264,7 +269,7 @@ export default {
     font-size: 2em;
     line-height: 2em;
     margin-top: 5vh;
-    border-bottom: solid var(--color-shadow) 2px;
+    border-bottom: solid #02C1C9 2px;
     text-align: left;
 }
 .article-block.article-image img {

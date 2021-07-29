@@ -15,10 +15,10 @@
               <div class="menu-content-row"><div class="menu-content-block"></div><a>Map</a><span class="menu-content-jp">マップ</span></div>
               <div class="menu-content-row"><div class="menu-content-block"></div><a>Timetable</a><span class="menu-content-jp">タイムテーブル</span></div>
               <div class="menu-content-row"><div class="menu-content-block"></div><a>Congestions</a><span class="menu-content-jp">室内混雑度</span></div>
-              <div class="menu-content-row" @click="transmit('departments')"><div class="menu-content-block"></div><a>Departments</a><span class="menu-content-jp">部門紹介</span></div>
+              <div class="menu-content-row" @click="transmit('/departments')"><div class="menu-content-block"></div><a>Departments</a><span class="menu-content-jp">部門紹介</span></div>
               <div class="menu-content-row"><div class="menu-content-block"></div><a>Club Exhibition</a><span class="menu-content-jp">展示団体</span></div>
               <div class="menu-content-row"><div class="menu-content-block"></div><a>Food Stands</a><span class="menu-content-jp">食品店舗</span></div>
-              <div class="menu-content-row"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
+              <div class="menu-content-row" @click="transmit('/articles')"><div class="menu-content-block"></div><a>Articles</a><span class="menu-content-jp">特集</span></div>
             </div>
             <div class="menu-over-color"></div>
           </div>
@@ -38,7 +38,7 @@
               <div class="notice-list-content-date">{{content.date}}</div>
               <div class="notice-list-content-body">{{content.body}}</div>
             </div>
-            <img class="notice-list-detail" src="../assets/image/notice-list-detail.svg" />
+            <img class="notice-list-detail" src="../assets/image/notice-list-detail.svg" @click="transmit('/articles')"/>
           </div>
         </div>
 
@@ -87,6 +87,7 @@
 <script>
 import * as animationData from "~/assets/animation/test.json";
 import {mapState} from 'vuex';
+import 'vue-router';
 import jQuery from 'jquery'
 global.jquery = jQuery
 global.$ = jQuery
@@ -99,6 +100,7 @@ export default {
   },
   mounted() {
     setTimeout(function() {
+        $('.scroll-container').scrollTop(0)
         this.onBlinded = false
     }.bind(this), 1000)
   },
@@ -106,7 +108,7 @@ export default {
     transmit(pageNmae) {
       this.setOnCloseDetailes(true)
       setTimeout(function() {
-        this.$router.push(pageNmae)
+        window.location.href = pageNmae
       }.bind(this), 1000)
     },
     handleAnimation(anim) {

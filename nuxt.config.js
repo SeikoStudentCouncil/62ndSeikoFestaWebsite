@@ -19,7 +19,7 @@ export default {
     
   },
 
-  scrollToTop: true,
+  scrollToTop: false,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
